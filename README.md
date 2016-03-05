@@ -15,7 +15,7 @@ composer install --dev
 # Testing
 
 ```
-phpunit tests
+vendor/bin/phpunit tests
 ```
 
 # Environment
