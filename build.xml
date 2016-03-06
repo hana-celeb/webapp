@@ -19,7 +19,7 @@
             <arg line="--log-junit=${basedir}/reports/unittest.xml" />
             <arg line="--coverage-html=${basedir}/reports" />
             <arg line="--coverage-clover=${basedir}/reports/coverage.xml" />
-            <arg line="${basedir}/tests" />
+            <arg line="${basedir}/tests/lib" />
         </exec>
     </target>
 
