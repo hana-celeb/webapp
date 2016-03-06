@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Phing build config file.
+    @link http://www.phing.info/
+-->
+<project name="blogapp" default="build">
+    <!-- Properties -->
+    <property name="basedir" value="${phing.dir}" />
+    <property name="appdir" value="${basedir}/src" />
+    <property name="logdir" value="${basedir}/logs" />
+    <property name="vendorbindir" value="${basedir}/vendor/bin" />
+
+    <!-- Build(1) -->
+    <target name="build" depends="test,phpcs,phpmd,phpcpd"/>
+
+    <target name="test" description="Run PHPUnit">
+        <exec dir="${appdir}" executable="php" output="${logdir}/test.log" checkreturn="true">
+            <arg line="--log-junit=${basedir}/reports/unittest.xml" />
+            <arg line="--coverage-html=${basedir}/reports" />
+            <arg line="--coverage-clover=${basedir}/reports/coverage.xml" />
+            <arg line="${basedir}/tests" />
+        </exec>
+    </target>
+
+    <!-- PHPCodeSniffer -->
+    <target name="phpcs" description="Find coding standard violations using PHP_CodeSniffer.">
+        <exec dir="${basedir}" executable="php" output="${logdir}/phpcs.log">
+            <arg line="${vendorbindir}/phpcs" />
+            <arg line="${appdir}" />
+        </exec>
+    </target>
+
+    <!-- PHPMD -->
+    <target name="phpmd" description="Perform project mess detection using PHPMD">
+        <exec dir="${basedir}" executable="php" output="${logdir}/phpmd.log">
+            <arg line="${vendorbindir}/phpmd" />
+            <arg line="${appdir}" />
+            <arg line="xml" />
+            <arg line="codesize,unusedcode,design,naming" />
+            <arg line="--reportfile ${appdir}/reports/phpmd.xml" />
+        </exec>
+    </target>
+
+    <!-- PHPCPD -->
+    <target name="phpcpd" description="Perform project mess detection using PHPMD">
+        <exec dir="${basedir}" executable="php" output="${logdir}/phpcpd.log">
+            <arg line="${vendorbindir}/phpcpd" />
+            <arg line="--log-pmd ${basedir}/reports/phpcpd.xml" />
+            <arg line="--names *.php" />
+            <arg line="${appdir}" />
+        </exec>
+    </target>
+</project>
