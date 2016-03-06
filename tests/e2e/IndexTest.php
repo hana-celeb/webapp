@@ -1,5 +1,7 @@
 <?php
 class IndexTest extends PHPUnit_Extensions_Selenium2TestCase {
+
+    
     public function setUp() {
         $targetUrl = 'http://celeb-test.cloudapp.net/';
 
@@ -11,6 +13,10 @@ class IndexTest extends PHPUnit_Extensions_Selenium2TestCase {
 
     public function testCatchText() {
         $this->url('/');
+
+        $screenshot = $this->currentScreenshot();
+        file_put_contents( __DIR__.'/../../reports/screenshot.png', $screenshot);
+
         $element = $this->byId('catch');
         $this->assertEquals('Hello World!', $element->text());
     }
