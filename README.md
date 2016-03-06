@@ -14,9 +14,16 @@ composer install --dev
 
 # Testing
 
+## Unit testing
 ```
-vendor/bin/phpunit tests
+vendor/bin/phpunit tests/lib
 ```
+
+## E2E testing
+```
+vendor/bin/phpunit tests/e2e
+```
+
 
 # Environment
 
