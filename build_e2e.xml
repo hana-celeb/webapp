@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Phing build config file.
+    @link http://www.phing.info/
+-->
+<project name="blogapp" default="build">
+    <!-- Properties -->
+    <property name="basedir" value="${phing.dir}" />
+    <property name="appdir" value="${basedir}/src" />
+    <property name="logdir" value="${basedir}/logs" />
+    <property name="vendorbindir" value="${basedir}/vendor/bin" />
+
+    <!-- Build(1) -->
+    <target name="build" depends="test,phpcs,phpmd,phpcpd"/>
+
+    <target name="test" description="Run PHPUnit e2e test">
+        <exec dir="${basedir}" executable="php" output="${logdir}/teste2e.log" checkreturn="true">
+            <arg line="${vendorbindir}/phpunit" />
+            <arg line="${basedir}/tests/e2e" />
+        </exec>
+    </target>
+</project>
