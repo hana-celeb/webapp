@@ -11,7 +11,7 @@
     <property name="vendorbindir" value="${basedir}/vendor/bin" />
 
     <!-- Build(1) -->
-    <target name="build" depends="test,phpcs,phpmd,phpcpd"/>
+    <target name="build" depends="test"/>
 
     <target name="test" description="Run PHPUnit e2e test">
         <exec dir="${basedir}" executable="php" output="${logdir}/teste2e.log" checkreturn="true">
