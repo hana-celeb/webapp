@@ -2,6 +2,6 @@
 class Speaker
 {
   public static function sayHelloWorld() {
-    return 'Hello World!';
+    return 'Hello Docker!';
   }
 }
