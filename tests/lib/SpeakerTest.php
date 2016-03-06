@@ -5,6 +5,6 @@ class SpeakerTest extends PHPUnit_Framework_TestCase
 {
   public function testCanSayHelloWorld()
   {
-    $this->assertEquals('Hello Docker!', Speaker::sayHelloWorld());
+    $this->assertEquals('I love Docker!', Speaker::sayHelloWorld());
   }
 }
