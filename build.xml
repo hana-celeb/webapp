@@ -14,7 +14,7 @@
     <target name="build" depends="test,phpcs,phpmd,phpcpd"/>
 
     <target name="test" description="Run PHPUnit">
-        <exec dir="${appdir}" executable="php" output="${logdir}/test.log" checkreturn="true">
+        <exec dir="${basedir}" executable="php" output="${logdir}/test.log" checkreturn="true">
             <arg line="${vendorbindir}/phpunit" />
             <arg line="--log-junit=${basedir}/reports/unittest.xml" />
             <arg line="--coverage-html=${basedir}/reports" />
