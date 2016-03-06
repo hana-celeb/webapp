@@ -27,6 +27,8 @@
     <target name="phpcs" description="Find coding standard violations using PHP_CodeSniffer.">
         <exec dir="${basedir}" executable="php" output="${logdir}/phpcs.log">
             <arg line="${vendorbindir}/phpcs" />
+            <arg line="--report=full --report-checkstyle=PSR2" />
+            <arg line="--report-checkstyle=${basedir}/reports/checkstyle.xml" />
             <arg line="${appdir}" />
         </exec>
     </target>
@@ -38,7 +40,7 @@
             <arg line="${appdir}" />
             <arg line="xml" />
             <arg line="codesize,unusedcode,design,naming" />
-            <arg line="--reportfile ${appdir}/reports/phpmd.xml" />
+            <arg line="--reportfile ${basedir}/reports/phpmd.xml" />
         </exec>
     </target>
 
